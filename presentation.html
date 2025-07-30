@@ -204,6 +204,114 @@
             background: #5a6fd8;
         }
 
+        .questions-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            margin: 40px 0;
+        }
+
+        .questions-section h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .questions-section p {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .question {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        .question h3 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .question p {
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .options {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .option {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            min-width: 100px;
+        }
+
+        .option:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .option.correct {
+            background: #28a745;
+            border-color: #28a745;
+        }
+
+        .option.incorrect {
+            background: #dc3545;
+            border-color: #dc3545;
+        }
+
+        .option.disabled {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .answer {
+            margin-top: 15px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            min-height: 20px;
+        }
+
+        .answer.correct {
+            background: rgba(40, 167, 69, 0.2);
+            color: #90EE90;
+            border: 1px solid rgba(40, 167, 69, 0.3);
+        }
+
+        .answer.incorrect {
+            background: rgba(220, 53, 69, 0.2);
+            color: #FFB6C1;
+            border: 1px solid rgba(220, 53, 69, 0.3);
+        }
+
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2rem;
@@ -230,6 +338,7 @@
         <button onclick="scrollToSection('day1')">Day 1</button>
         <button onclick="scrollToSection('day2')">Day 2</button>
         <button onclick="scrollToSection('conclusion')">Conclusion</button>
+        <button onclick="scrollToSection('questions')">Quiz</button>
     </div>
 
     <div class="container">
@@ -375,6 +484,43 @@
                     </ul>
                 </div>
 
+                <div class="questions-section" id="questions">
+                    <h2>Quiz Time! 🎯</h2>
+                    <p>Let's test what you remember from my presentation!</p>
+                    
+                    <div class="quiz-container">
+                        <div class="question">
+                            <h3>Question 1:</h3>
+                            <p>Did we ride the horse to Can Tho City?</p>
+                            <div class="options">
+                                <button class="option" onclick="checkAnswer(1, false)">Yes</button>
+                                <button class="option" onclick="checkAnswer(1, true)">No</button>
+                            </div>
+                            <div class="answer" id="answer1"></div>
+                        </div>
+
+                        <div class="question">
+                            <h3>Question 2:</h3>
+                            <p>They did enjoy the 2nd day because of the rain</p>
+                            <div class="options">
+                                <button class="option" onclick="checkAnswer(2, true)">True</button>
+                                <button class="option" onclick="checkAnswer(2, false)">False</button>
+                            </div>
+                            <div class="answer" id="answer2"></div>
+                        </div>
+
+                        <div class="question">
+                            <h3>Question 3:</h3>
+                            <p>Vietnamese don't eat snake</p>
+                            <div class="options">
+                                <button class="option" onclick="checkAnswer(3, false)">True</button>
+                                <button class="option" onclick="checkAnswer(3, true)">False</button>
+                            </div>
+                            <div class="answer" id="answer3"></div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="thank-you">
                     <h2>Thank You!</h2>
                     <p><em>Questions and comments are welcome!</em></p>
@@ -392,6 +538,46 @@
                     block: 'start'
                 });
             }
+        }
+
+        function checkAnswer(questionNumber, isCorrect) {
+            const answerDiv = document.getElementById(`answer${questionNumber}`);
+            const buttons = document.querySelectorAll(`#questions .question:nth-child(${questionNumber}) .option`);
+            
+            // Disable all buttons for this question
+            buttons.forEach(button => {
+                button.classList.add('disabled');
+            });
+
+            // Mark the clicked button
+            event.target.classList.add(isCorrect ? 'correct' : 'incorrect');
+
+            // Show the answer
+            if (isCorrect) {
+                answerDiv.innerHTML = '✅ Correct! Well done!';
+                answerDiv.className = 'answer correct';
+            } else {
+                answerDiv.innerHTML = '❌ Incorrect. Try again!';
+                answerDiv.className = 'answer incorrect';
+            }
+
+            // Add explanation based on question
+            let explanation = '';
+            switch(questionNumber) {
+                case 1:
+                    explanation = 'We rode motorcycles ("steel horses") not actual horses!';
+                    break;
+                case 2:
+                    explanation = 'Despite the rain, we had an amazing adventure at the floating market!';
+                    break;
+                case 3:
+                    explanation = 'I bought fried snake as a gift for my father - it\'s a local delicacy!';
+                    break;
+            }
+            
+            setTimeout(() => {
+                answerDiv.innerHTML += '<br><small>' + explanation + '</small>';
+            }, 1000);
         }
 
         // Add some interactive features
