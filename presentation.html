@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Amazing Trip to Can Tho City - English Club Presentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .presentation {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            border-left: 5px solid #667eea;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+        }
+
+        .section h3 {
+            color: #495057;
+            font-size: 1.5rem;
+            margin: 25px 0 15px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .section h3::before {
+            content: "📍";
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .bullet-points {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .bullet-points li {
+            margin: 12px 0;
+            padding: 8px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .bullet-points li::before {
+            content: "▶";
+            color: #667eea;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 8px;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .image-container p {
+            margin-top: 15px;
+            font-style: italic;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .conclusion {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .conclusion h2 {
+            color: white;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .conclusion .bullet-points li::before {
+            color: white;
+        }
+
+        .thank-you {
+            text-align: center;
+            padding: 40px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        .thank-you h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .emoji {
+            font-size: 1.2em;
+            margin: 0 5px;
+        }
+
+        .divider {
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            margin: 40px 0;
+            border-radius: 2px;
+        }
+
+        .navigation {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .navigation button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .navigation button:hover {
+            background: #5a6fd8;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .navigation {
+                position: static;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navigation">
+        <button onclick="scrollToSection('intro')">Intro</button>
+        <button onclick="scrollToSection('day1')">Day 1</button>
+        <button onclick="scrollToSection('day2')">Day 2</button>
+        <button onclick="scrollToSection('conclusion')">Conclusion</button>
+    </div>
+
+    <div class="container">
+        <div class="presentation">
+            <div class="header">
+                <h1>My Amazing Trip to Can Tho City</h1>
+                <p>English Club Presentation</p>
+            </div>
+
+            <div class="content">
+                <!-- Introduction -->
+                <div class="section" id="intro">
+                    <h2>Introduction</h2>
+                    <p>I want to share with you about an incredible 2-day trip I had last month to <span class="highlight">Can Tho City</span>.</p>
+                    
+                    <p><span class="highlight">Can Tho City</span> is the largest city in Vietnam's Mekong Delta region, often called the "Rice Bowl of Vietnam." It's famous for its floating markets, beautiful rivers, and delicious local cuisine. The city serves as the economic and cultural center of the Mekong Delta, attracting visitors with its unique water-based lifestyle and traditional Vietnamese culture.</p>
+                </div>
+
+                <div class="divider"></div>
+
+                <!-- Day 1 -->
+                <div class="section" id="day1">
+                    <h2>Day 1: The Journey Begins</h2>
+
+                    <h3>Early Morning Departure</h3>
+                    <ul class="bullet-points">
+                        <li><span class="highlight">Woke up at 5 AM</span> - bright and early!</li>
+                        <li>Had breakfast and coffee to fuel our adventure</li>
+                        <li><span class="highlight">Started our journey at 7 AM</span> from Ho Chi Minh City</li>
+                    </ul>
+
+                    <h3>The Road Trip</h3>
+                    <ul class="bullet-points">
+                        <li><span class="highlight">Rode our "steel horses"</span> (motorcycles <span class="emoji">😄</span>) for <span class="highlight">2.5 hours</span></li>
+                        <li>Traveled along the <span class="highlight">1A National Road</span></li>
+                        <li><span class="highlight">Arrived at our first destination at 10 AM</span></li>
+                    </ul>
+
+                    <h3>First Stop: Jade Buddha Pagoda</h3>
+                    <ul class="bullet-points">
+                        <li><span class="highlight">Vinh Long Province</span> - our first sightseeing spot</li>
+                        <li>Explored the beautiful pagoda and relics</li>
+                        <li>Took a short break before continuing</li>
+                    </ul>
+
+                    <div class="image-container">
+                        <img src="2025_07_30/IMG_2708.HEIC" alt="Jade Buddha Pagoda">
+                        <p>Jade Buddha Pagoda - Our first stop</p>
+                    </div>
+
+                    <h3>Arrival in Can Tho</h3>
+                    <ul class="bullet-points">
+                        <li><span class="highlight">Reached Can Tho City</span> after another hour of travel</li>
+                        <li><span class="highlight">Lunch at a local restaurant</span></li>
+                        <li><span class="highlight">Tried the famous Mekong Fermented Fish Noodle Soup</span></li>
+                        <li><em>Everyone loved the meal!</em></li>
+                    </ul>
+
+                    <div class="image-container">
+                        <img src="2025_07_30/IMG_2705.HEIC" alt="On the road to Can Tho">
+                        <p>On the road to Can Tho - Beautiful countryside views</p>
+                    </div>
+
+                    <h3>Afternoon Adventures</h3>
+                    <ul class="bullet-points">
+                        <li><span class="highlight">Checked into our hotel</span> and relaxed</li>
+                        <li><span class="highlight">Continued sightseeing</span> in the afternoon</li>
+                        <li><span class="highlight">Evening excitement at the park</span></li>
+                    </ul>
+
+                    <h3>The Crazy Park Experience</h3>
+                    <ul class="bullet-points">
+                        <li><span class="highlight">Hired small electric city vehicles</span></li>
+                        <li><span class="highlight">Had an amazing race</span> around the park! <span class="emoji">🏁</span></li>
+                        <li><span class="highlight">Were amazed by the local kids</span> - they drove so skillfully, even better than us!</li>
+                        <li><span class="highlight">Went to the local market for dinner</span> - tried many delicious local foods</li>
+                        <li><span class="highlight">Played board games until midnight</span></li>
+                    </ul>
+
+                    <div class="image-container">
+                        <img src="2025_07_30/IMG_2746.gif" alt="Electric vehicle race">
+                        <p>Electric vehicle race - The exciting park adventure!</p>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <!-- Day 2 -->
+                <div class="section" id="day2">
+                    <h2>Day 2: Floating Market Adventure</h2>
+
+                    <h3>Cai Rang Floating Market</h3>
+                    <ul class="bullet-points">
+                        <li><span class="highlight">Visited Chợ nổi Cái Răng</span> (Cai Rang Floating Market)</li>
+                        <li><span class="highlight">Another crazy memory</span> for our group!</li>
+                    </ul>
+
+                    <h3>The Rainy River Experience</h3>
+                    <ul class="bullet-points">
+                        <li><span class="highlight">It was raining</span> during our boat trip</li>
+                        <li><span class="highlight">Small boat, big waves</span> - quite an adventure!</li>
+                        <li><span class="highlight">"Chúng tôi chao đảo giữa con sông"</span> (We were swaying in the middle of the river)</li>
+                        <li><span class="highlight">Many big boats around us</span> - quite intimidating!</li>
+                        <li><span class="highlight">Had breakfast in the middle of the river</span> - unique experience!</li>
+                        <li><span class="highlight">Bought fried snake as a gift</span> for my father</li>
+                    </ul>
+
+                    <div class="image-container">
+                        <img src="2025_07_30/many_boats.png" alt="Cai Rang Floating Market">
+                        <p>Cai Rang Floating Market - Many boats and exciting river life</p>
+                    </div>
+
+                    <h3>The Wedding and Return</h3>
+                    <ul class="bullet-points">
+                        <li><span class="highlight">Attended my friend's wedding ceremony</span></li>
+                        <li><span class="highlight">Returned to Ho Chi Minh City</span></li>
+                    </ul>
+                </div>
+
+                <div class="divider"></div>
+
+                <!-- Conclusion -->
+                <div class="conclusion" id="conclusion">
+                    <h2>Conclusion</h2>
+
+                    <h3>Trip Reflection</h3>
+                    <ul class="bullet-points">
+                        <li><span class="highlight">The trip was fun and enjoyable</span></li>
+                        <li>This was my <span class="highlight">second time</span> visiting Can Tho City</li>
+                        <li><span class="highlight">First visit was 8 years ago</span> - not as fun as this time</li>
+                        <li><span class="highlight">Realized I should travel more on weekends</span> <span class="emoji">😄</span></li>
+                    </ul>
+
+                    <h3>Key Takeaways</h3>
+                    <ul class="bullet-points">
+                        <li><span class="highlight">Amazing local cuisine</span> - especially the fermented fish noodle soup</li>
+                        <li><span class="highlight">Unique cultural experiences</span> - floating markets, electric vehicle racing</li>
+                        <li><span class="highlight">Beautiful Mekong Delta scenery</span></li>
+                        <li><span class="highlight">Great memories with friends</span></li>
+                    </ul>
+                </div>
+
+                <div class="thank-you">
+                    <h2>Thank You!</h2>
+                    <p><em>Questions and comments are welcome!</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Add some interactive features
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add fade-in effect to sections
+            const sections = document.querySelectorAll('.section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html> 
